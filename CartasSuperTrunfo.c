@@ -4,7 +4,7 @@ int main() {
     //declarei as variáveis para cada descrição das duas cartas, por seus respectivos tipos
     char estado1[12], estado2[12], cidade1[22], cidade2[22];
     int populacao1, populacao2, pontosTuristicos1, pontosTuristicos2;
-    float area1, area2, pib1, pib2;
+    float area1, area2, pib1, pib2, densidadePopulacional1, pibPerCapita1, densidadePopulacional2, pibPerCapita2;
 
     //fiz o questionário com printf e o sancf para receber os dados nas variáveis anteriormente declaradas
     printf("Digite o estado da primeira carta: \n");
@@ -20,9 +20,14 @@ int main() {
     printf("Digite a quatidade de pontos turísticos: \n");
     scanf("%d", &pontosTuristicos1);
 
-    //fiz o prinf que mostra a carta por completo, com os dados que foram digitados pelo usuário
-    printf("Carta 1:\n Estado: %s\n Código: A01\n Nome da Cidade: %s\n População: %d\n Área: %f\n PIB: %f\n Número de Pontos Turisticos: %d", estado1, cidade1, populacao1, area1, pib1, pontosTuristicos1);
+    //fiz o cálculo da densidade populacional e pib percapita, anteriormente declarados, convertendo os valores para float
+    densidadePopulacional1 = (float) populacao1 / area1;
+    pibPerCapita1 = (float) pib1 / populacao1;
 
+    //fiz o prinf que mostra a carta por completo, com os dados que foram digitados pelo usuário
+    printf("Carta 1:\n Estado: %s\n Código: A01\n Nome da Cidade: %s\n População: %d\n Área: %f km²\n PIB: %f\n Número de Pontos Turisticos: %d", estado1, cidade1, populacao1, area1, pib1, pontosTuristicos1);
+    printf("\n Densidade Populacional: %.2f hab/km²\n PIB per Capita: %.2f reais\n", densidadePopulacional1, pibPerCapita1);
+    
     //é inciado após apresentação da primeira carta, o questionário da segunda, da mesma forma anterior
     printf("\nDigite o estado da segunda carta: \n");
     scanf("%10s", &estado2);
@@ -37,8 +42,12 @@ int main() {
     printf("Digite a quatidade de pontos turísticos: \n");
     scanf("%d", &pontosTuristicos2);
 
-    //apresentação da segunda carta, igualmente a primeira
-    printf("Carta 2:\n Estado: %s\n Código: A02\n Nome da Cidade: %s\n População: %d\n Área: %f\n PIB: %f\n Número de Pontos Turisticos: %d", estado2, cidade2, populacao2, area2, pib2, pontosTuristicos2);
+    densidadePopulacional2 = (float) populacao2 / area2;
+    pibPerCapita2 = (float) pib2 / populacao2;
 
+    //apresentação da segunda carta, igualmente a primeira
+    printf("Carta 2:\n Estado: %s\n Código: A02\n Nome da Cidade: %s\n População: %d\n Área: %f km²\n PIB: %f\n Número de Pontos Turisticos: %d", estado2, cidade2, populacao2, area2, pib2, pontosTuristicos2);
+    printf("\n Densidade Populacional: %.2f hab/km²\n PIB per Capita: %.2f reais\n", densidadePopulacional2, pibPerCapita2);
+    
     return 0;
 }
