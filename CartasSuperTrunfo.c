@@ -1,22 +1,64 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
-
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+    //declarei as variáveis para cada descrição das duas cartas, por seus respectivos tipos
+    char estado1[12], estado2[12], cidade1[22], cidade2[22];
 
+    int pontosTuristicos1, pontosTuristicos2;
+    unsigned long int populacao1, populacao2;
+    float area1, area2, pib1, pib2, densidadePopulacional1, pibPerCapita1, densidadePopulacional2, pibPerCapita2, superPoder1, superPoder2;
+
+    //fiz o questionário com printf e o sancf para receber os dados nas variáveis anteriormente declaradas
+    printf("Digite o estado da primeira carta: \n");
+    scanf("%10s", &estado1);
+    printf("Digite a cidade: \n");
+    scanf("%20s", &cidade1);
+    printf("Digite a população: \n");
+    scanf("%lu", &populacao1);
+    printf("Digite a área: \n");
+    scanf("%f", &area1);
+    printf("Digite o PIB: \n");
+    scanf("%f", &pib1);
+    printf("Digite a quatidade de pontos turísticos: \n");
+    scanf("%d", &pontosTuristicos1);
+
+    //fiz o cálculo da densidade populacional e pib percapita, anteriormente declarados, convertendo os valores para float
+    densidadePopulacional1 = (float) populacao1 / area1;
+    pibPerCapita1 = (float) pib1 / populacao1;
+
+    superPoder1 = populacao1 + area1 + pib1 + pontosTuristicos1 + pibPerCapita1 + (1 / densidadePopulacional1);
+
+    //fiz o prinf que mostra a carta por completo, com os dados que foram digitados pelo usuário
+    printf("Carta 1:\n Estado: %s\n Código: A01\n Nome da Cidade: %s\n População: %lu\n Área: %f km²\n PIB: %f\n Número de Pontos Turisticos: %d", estado1, cidade1, populacao1, area1, pib1, pontosTuristicos1);
+    printf("Densidade Populacional: %.2f hab/km²\n PIB per Capita: %.2f reais\n Super poder: %f\n", densidadePopulacional1, pibPerCapita1, superPoder1);
+
+    //é inciado após apresentação da primeira carta, o questionário da segunda, da mesma forma anterior
+    printf("\nDigite o estado da segunda carta: \n");
+    scanf("%10s", &estado2);
+    printf("Digite a cidade: \n");
+    scanf("%20s", &cidade2);
+    printf("Digite a população: \n");
+    scanf("%lu", &populacao2);
+    printf("Digite a área: \n");
+    scanf("%f", &area2);
+    printf("Digite o PIB: \n");
+    scanf("%f", &pib2);
+    printf("Digite a quatidade de pontos turísticos: \n");
+    scanf("%d", &pontosTuristicos2);
+
+    densidadePopulacional2 = (float) populacao2 / area2;
+    pibPerCapita2 = (float) pib2 / populacao2;
+
+
+    superPoder2 = populacao2 + area2 + pib2 + pontosTuristicos2 + pibPerCapita2 + (1 / densidadePopulacional2);
+
+    //apresentação da segunda carta, igualmente a primeira
+    printf("Carta 2:\n Estado: %s\n Código: A02\n Nome da Cidade: %s\n População: %lu\n Área: %f km²\n PIB: %f\n Número de Pontos Turisticos: %d", estado2, cidade2, populacao2, area2, pib2, pontosTuristicos2);
+    printf("Densidade Populacional: %.2f hab/km²\n PIB per Capita: %.2f reais\n Super poder: %f\n", densidadePopulacional2, pibPerCapita2, superPoder2);
+    
+    printf("****Comparação de cartas:****");
+    printf("Resultado 1 (Carta 1 venceu) - Resultado 0 (Carta 2 venceu)");
+    printf("População: %lu\n Área: %f\n PIB: %f\n Pontos turísticos: %d\n Densidade populacional: %f\n PIB per capta: %f\n Super poder: %f\n", populacao1 > populacao2, area1 > area2, pib1 > pib2, pontosTuristicos1 > pontosTuristicos2, densidadePopulacional1 > densidadePopulacional2, pibPerCapita1 > pibPerCapita2, superPoder1 < superPoder2);
+  
     return 0;
 }
